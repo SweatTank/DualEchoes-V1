@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=3 uid="uid://wvkptl2n63ru"]
+
+[ext_resource type="Texture2D" uid="uid://b2rpuby82h0dk" path="res://assets/tilesets/oak_woods_tileset.png" id="1_3d7ia"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38dtj"]
+size = Vector2(48, 48)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(216, 624)
+scale = Vector2(2, 2.08696)
+texture = ExtResource("1_3d7ia")
+region_enabled = true
+region_rect = Rect2(287.49, 0.564474, 24.7082, 23.7141)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(216.281, 623.125)
+shape = SubResource("RectangleShape2D_38dtj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(264, 624)
+scale = Vector2(2, 2.08696)
+texture = ExtResource("1_3d7ia")
+region_enabled = true
+region_rect = Rect2(287.49, 0.564474, 24.7082, 23.7141)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(264.281, 623.125)
+shape = SubResource("RectangleShape2D_38dtj")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(312, 624)
+scale = Vector2(2, 2.08696)
+texture = ExtResource("1_3d7ia")
+region_enabled = true
+region_rect = Rect2(287.49, 0.564474, 24.7082, 23.7141)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(312.281, 623.125)
+shape = SubResource("RectangleShape2D_38dtj")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(360, 624)
+scale = Vector2(2, 2.08696)
+texture = ExtResource("1_3d7ia")
+region_enabled = true
+region_rect = Rect2(287.49, 0.564474, 24.7082, 23.7141)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(360.281, 623.125)
+shape = SubResource("RectangleShape2D_38dtj")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(360, 576)
+scale = Vector2(2, 2.08696)
+texture = ExtResource("1_3d7ia")
+region_enabled = true
+region_rect = Rect2(287.49, 0.564474, 24.7082, 23.7141)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(360.281, 575.125)
+shape = SubResource("RectangleShape2D_38dtj")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(408, 576)
+scale = Vector2(2, 2.08696)
+texture = ExtResource("1_3d7ia")
+region_enabled = true
+region_rect = Rect2(287.49, 0.564474, 24.7082, 23.7141)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(408.281, 575.125)
+shape = SubResource("RectangleShape2D_38dtj")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(456, 576)
+scale = Vector2(2, 2.08696)
+texture = ExtResource("1_3d7ia")
+region_enabled = true
+region_rect = Rect2(287.49, 0.564474, 24.7082, 23.7141)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
+position = Vector2(456.281, 575.125)
+shape = SubResource("RectangleShape2D_38dtj")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(504, 576)
+scale = Vector2(2, 2.08696)
+texture = ExtResource("1_3d7ia")
+region_enabled = true
+region_rect = Rect2(287.49, 0.564474, 24.7082, 23.7141)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="."]
+position = Vector2(504.281, 575.125)
+shape = SubResource("RectangleShape2D_38dtj")

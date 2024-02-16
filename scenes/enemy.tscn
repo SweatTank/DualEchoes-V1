@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://docfvr2i310dj"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(609, 323)
+scale = Vector2(5.41667, 3.8125)
+hframes = 11

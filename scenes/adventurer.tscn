@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://b86goacdqjs1v"]
+
+[ext_resource type="Texture2D" uid="uid://3ia5iu08ilw3" path="res://assets/MC/adventurer-Sheet.png" id="1_o0bop"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfsmb"]
+atlas = ExtResource("1_o0bop")
+region = Rect2(150, 185, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkxy2"]
+atlas = ExtResource("1_o0bop")
+region = Rect2(200, 185, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irs3o"]
+atlas = ExtResource("1_o0bop")
+region = Rect2(250, 185, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5ii7"]
+atlas = ExtResource("1_o0bop")
+region = Rect2(300, 185, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm1ox"]
+atlas = ExtResource("1_o0bop")
+region = Rect2(150, 185, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7i6j5"]
+atlas = ExtResource("1_o0bop")
+region = Rect2(200, 185, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok6wx"]
+atlas = ExtResource("1_o0bop")
+region = Rect2(250, 185, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4igl"]
+atlas = ExtResource("1_o0bop")
+region = Rect2(300, 185, 50, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8g76m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfsmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkxy2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irs3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5ii7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm1ox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7i6j5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok6wx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4igl")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16sed"]
+size = Vector2(31, 53)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-1, 8)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-2, -1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+texture_filter = 3
+position = Vector2(690.813, 379)
+scale = Vector2(2.0875, 2.86487)
+sprite_frames = SubResource("SpriteFrames_8g76m")
+animation = &"Idle"
+frame_progress = 0.450307
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(690.5, 401.5)
+shape = SubResource("RectangleShape2D_16sed")
