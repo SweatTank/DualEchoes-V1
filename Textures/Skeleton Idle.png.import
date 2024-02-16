@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmy6x3hxjohvr"
-path="res://.godot/imported/Skeleton Attack.png-268ec48ac6d020a80cac7435bbea97e6.ctex"
+uid="uid://bl440i7xjvtu4"
+path="res://.godot/imported/Skeleton Idle.png-913a8ba5b4ebd26010aa4206c63747ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Enemy/Skeleton Attack.png"
-dest_files=["res://.godot/imported/Skeleton Attack.png-268ec48ac6d020a80cac7435bbea97e6.ctex"]
+source_file="res://Textures/Skeleton Idle.png"
+dest_files=["res://.godot/imported/Skeleton Idle.png-913a8ba5b4ebd26010aa4206c63747ec.ctex"]
 
 [params]
 
