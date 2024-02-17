@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://hgryn8yhxnrm"]
+[gd_scene load_steps=7 format=3 uid="uid://hgryn8yhxnrm"]
 
 [ext_resource type="Texture2D" uid="uid://cot2vq13tnagv" path="res://assets/background/background_layer_1.png" id="1_fg3sh"]
 [ext_resource type="Texture2D" uid="uid://b2rpuby82h0dk" path="res://assets/tilesets/oak_woods_tileset.png" id="2_1s5tm"]
-[ext_resource type="PackedScene" uid="uid://b86goacdqjs1v" path="res://scenes/adventurer.tscn" id="3_andu3"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o1gcx"]
 load_path = "res://.godot/imported/background_layer_2.png-ed9c3ba8271a3fcd1393d4ba5ccb0e53.ctex"
@@ -570,7 +569,3 @@ format = 2
 layer_0/name = "bg"
 layer_1/name = "wall and floor"
 layer_1/tile_data = PackedInt32Array(262137, 2, 0, 262138, 65538, 0, 262139, 65538, 0, 262140, 65538, 0, 262141, 65538, 0, 262142, 65538, 0, 262143, 65538, 0, 196608, 196610, 0, 262144, 196610, 1, 327680, 196610, 2, 393216, 196610, 3, 327674, 65538, 1, 327675, 65538, 1, 327676, 65538, 1, 327677, 65538, 1, 327678, 65538, 1, 327679, 65538, 1, 393215, 65538, 1, 393214, 65538, 1, 393213, 65538, 1, 393212, 65538, 1, 393211, 65538, 1, 393210, 65538, 1, 458746, 65538, 1, 458747, 65538, 1, 458748, 65538, 1, 458749, 65538, 1, 458750, 65538, 1, 458751, 65538, 1, 327673, 2, 1, 393209, 2, 1, 458745, 2, 2, 196610, 2, 0, 196611, 65538, 0, 196612, 131074, 0, 196613, 196610, 0, 262146, 2, 1, 327682, 2, 2, 393218, 2, 3, 262147, 65538, 1, 393219, 65538, 3, 393220, 131074, 3, 262149, 196610, 1, 327685, 196610, 2, 393221, 196610, 3, -262138, 589826, 6, -196602, 589826, 7, -131066, 589826, 6, -65530, 589826, 7, 6, 589826, 8, 65542, 589826, 9, 131078, 589826, 10, -262137, 65538, 1, -196601, 65538, 1, -131065, 65538, 1, -65529, 65538, 1, 7, 65538, 1, 65543, 65538, 1, 131079, 65538, 1, 196615, 65538, 1, 196614, 65538, 1, 262150, 65538, 1, 262151, 65538, 1, 327687, 65538, 1, 327686, 65538, 1, 393222, 65538, 1, 393223, 65538, 1, 262145, 983042, 1, 327681, 983042, 1, 393217, 983042, 1)
-
-[node name="Node2D" parent="." instance=ExtResource("3_andu3")]
-position = Vector2(-313, -187)
-scale = Vector2(0.6, 0.6)
