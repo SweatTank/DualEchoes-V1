@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://hgryn8yhxnrm"]
+[gd_scene load_steps=9 format=3 uid="uid://hgryn8yhxnrm"]
 
 [ext_resource type="Texture2D" uid="uid://cot2vq13tnagv" path="res://assets/background/background_layer_1.png" id="1_fg3sh"]
 [ext_resource type="Texture2D" uid="uid://b2rpuby82h0dk" path="res://assets/tilesets/oak_woods_tileset.png" id="2_1s5tm"]
 [ext_resource type="PackedScene" uid="uid://vnsuup53ovdf" path="res://scenes/enemy.tscn" id="3_5hldf"]
+[ext_resource type="PackedScene" uid="uid://ksjlxjwt1brw" path="res://scenes/player.tscn" id="4_7yqu4"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o1gcx"]
 load_path = "res://.godot/imported/background_layer_2.png-ed9c3ba8271a3fcd1393d4ba5ccb0e53.ctex"
@@ -580,3 +581,6 @@ zoom = Vector2(3, 3)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_5hldf")]
 position = Vector2(-77, 46)
+
+[node name="Player" parent="." instance=ExtResource("4_7yqu4")]
+position = Vector2(-24, 39)
