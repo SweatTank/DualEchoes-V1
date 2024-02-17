@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://vnsuup53ovdf"]
+
+[ext_resource type="Texture2D" uid="uid://byr2oes8mfc4m" path="res://assets/skele/Skeleton Idle.png" id="1_8vqut"]
+[ext_resource type="Script" path="res://skele/enemy.gd" id="1_ommbm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_alb4s"]
+radius = 8.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_ommbm")
+speed = 200.0
+jump_velocity = -200.0
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(4, -3)
+texture = ExtResource("1_8vqut")
+hframes = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_alb4s")
