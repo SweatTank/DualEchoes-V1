@@ -76,12 +76,13 @@ position = Vector2(-1, 8)
 position = Vector2(-2, -1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-texture_filter = 3
+texture_filter = 1
 position = Vector2(690.813, 379)
 scale = Vector2(2.0875, 2.86487)
 sprite_frames = SubResource("SpriteFrames_8g76m")
 animation = &"Idle"
-frame_progress = 0.65187
+frame = 6
+frame_progress = 0.683915
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(690.5, 401.5)
