@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://hgryn8yhxnrm"]
+[gd_scene load_steps=9 format=3 uid="uid://hgryn8yhxnrm"]
 
 [ext_resource type="Texture2D" uid="uid://cot2vq13tnagv" path="res://assets/background/background_layer_1.png" id="1_fg3sh"]
 [ext_resource type="Texture2D" uid="uid://b2rpuby82h0dk" path="res://assets/tilesets/oak_woods_tileset.png" id="2_1s5tm"]
+[ext_resource type="Script" path="res://scripts/plax.gd" id="2_imtwg"]
 [ext_resource type="PackedScene" uid="uid://vnsuup53ovdf" path="res://scenes/enemy.tscn" id="3_5hldf"]
-[ext_resource type="Texture2D" uid="uid://4xooe04aebl3" path="res://assets/background/background_layer_2.png" id="4_s4dgx"]
-[ext_resource type="Texture2D" uid="uid://bok0j25rko8ca" path="res://assets/background/background_layer_3.png" id="5_3ig8e"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o1gcx"]
+load_path = "res://.godot/imported/background_layer_2.png-ed9c3ba8271a3fcd1393d4ba5ccb0e53.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_puw2r"]
+load_path = "res://.godot/imported/background_layer_3.png-def9e2387c415e1d1e86ef895af4fb88.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_72cm1"]
 texture = ExtResource("2_1s5tm")
@@ -537,30 +542,50 @@ sources/2 = SubResource("TileSetAtlasSource_72cm1")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(6, -13)
-motion_scale = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(-6, -3)
-scale = Vector2(1.0375, 1.03333)
+position = Vector2(-3.5, -2)
+scale = Vector2(1.02188, 1.02222)
 texture = ExtResource("1_fg3sh")
+script = ExtResource("2_imtwg")
+layer = null
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(330, 0)
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(323.5, -0.999992)
+scale = Vector2(1.02188, 1.02222)
+texture = ExtResource("1_fg3sh")
+script = ExtResource("2_imtwg")
+layer = null
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(5.72205e-06, -16)
-scale = Vector2(1.0375, 1.03333)
-texture = ExtResource("4_s4dgx")
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
 position = Vector2(6, -13)
-motion_mirroring = Vector2(330, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(-5.5, -3)
-scale = Vector2(1.03437, 1.03333)
-texture = ExtResource("5_3ig8e")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+position = Vector2(-3.5, -2)
+scale = Vector2(1.02188, 1.02222)
+texture = SubResource("CompressedTexture2D_o1gcx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+position = Vector2(323.5, -0.999992)
+scale = Vector2(1.02188, 1.02222)
+texture = SubResource("CompressedTexture2D_o1gcx")
+
+[node name="ParallaxBackground3" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground3"]
+position = Vector2(6, -13)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+position = Vector2(-3.5, -2)
+scale = Vector2(1.02188, 1.02222)
+texture = SubResource("CompressedTexture2D_puw2r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground3/ParallaxLayer"]
+position = Vector2(323.5, -0.999992)
+scale = Vector2(1.02188, 1.02222)
+texture = SubResource("CompressedTexture2D_puw2r")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(6, -13)
@@ -569,6 +594,9 @@ format = 2
 layer_0/name = "bg"
 layer_1/name = "wall and floor"
 layer_1/tile_data = PackedInt32Array(262137, 2, 0, 262138, 65538, 0, 262139, 65538, 0, 262140, 65538, 0, 262141, 65538, 0, 262142, 65538, 0, 262143, 65538, 0, 196608, 196610, 0, 262144, 196610, 1, 327680, 196610, 2, 393216, 196610, 3, 327674, 65538, 1, 327675, 65538, 1, 327676, 65538, 1, 327677, 65538, 1, 327678, 65538, 1, 327679, 65538, 1, 393215, 65538, 1, 393214, 65538, 1, 393213, 65538, 1, 393212, 65538, 1, 393211, 65538, 1, 393210, 65538, 1, 458746, 65538, 1, 458747, 65538, 1, 458748, 65538, 1, 458749, 65538, 1, 458750, 65538, 1, 458751, 65538, 1, 327673, 2, 1, 393209, 2, 1, 458745, 2, 2, 196610, 2, 0, 196611, 65538, 0, 196612, 131074, 0, 262146, 2, 1, 327682, 2, 2, 393218, 2, 3, 262147, 65538, 1, 393219, 65538, 3, 393220, 131074, 3, 393221, 196610, 3, 262150, 65538, 1, 262151, 65538, 1, 327687, 65538, 1, 327686, 65538, 1, 393222, 65538, 1, 393223, 65538, 1, 262145, 983042, 1, 327681, 983042, 1, 393217, 983042, 1, -8, 655362, 9, 65528, 655362, 10, 131064, 655362, 8, 196600, 655362, 9, 262136, 655362, 10, -196616, 655362, 6, -131080, 655362, 7, -65544, 655362, 8, 196599, 2, 10, 262135, 2, 10, 327671, 2, 10, 327672, 196610, 10, 131063, 65538, 10, -9, 65538, 10, -131081, 65538, 10, 65527, 2, 10, -65545, 2, 10, -196617, 2, 10, 262148, 983042, 10, 327684, 983042, 10, 327683, 983042, 10, 589819, 65538, 1, 196615, 851970, 6, 196614, 131074, 0, 196613, 65538, 0, 262149, 1179650, 7, 327685, 1179650, 7, 196616, 393218, 0, 196617, 393218, 0, 196618, 393218, 0, 196619, 393218, 0, -262138, 589826, 6, -196602, 589826, 7, -131066, 589826, 8, -65530, 589826, 9, 6, 589826, 10, -262137, 655362, 6, -196601, 655362, 7, -131065, 655362, 8, -65529, 655362, 9, 7, 655362, 10)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
 
 [node name="enemy" parent="." instance=ExtResource("3_5hldf")]
 position = Vector2(-77, 46)
