@@ -396,7 +396,9 @@ script = ExtResource("1_5rylc")
 speed = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-26, -20)
 texture = ExtResource("2_rk0fr")
+centered = false
 hframes = 7
 vframes = 11
 frame = 8
