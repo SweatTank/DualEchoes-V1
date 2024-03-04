@@ -2,40 +2,49 @@ extends CharacterBody2D
 
 
 @export var speed : float = 300.0
-@export var jump_velocity : float = -400.0
-@export var double_jump_velocity : float = -100
 
-@onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
+
+
+@onready var sprite : Sprite2D = $Sprite2D
+@onready var animation_tree : AnimationTree = $AnimationTree
+@onready var state_machine : CharacterStateMachine = $CharacterStateMachine
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var has_double_jumped : bool = false
 var animation_locked : bool = false
 var direction : Vector2 = Vector2.ZERO
+var was_in_air : bool = false
 
+func _ready():
+	animation_tree.active = true
 
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		was_in_air = true
 	else:
 		has_double_jumped = false
+		
+		if was_in_air == true:
+			#land()
+			pass
 
-	# Handle jump.
-	if Input.is_action_just_pressed("Player_jump"):
-		if is_on_floor():
-			velocity.y = jump_velocity
-		elif not has_double_jumped:
-			velocity.y = double_jump_velocity + jump_velocity
-			has_double_jumped = true
+
 			
+			
+	if Input.is_action_just_pressed("Player_Attack"):
+		if is_on_floor():
+			#animated_sprite.play("attack")
+			animation_locked = true
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	direction = Input.get_vector("Player_left", "Player_right", "Player_jump", "Player_down")
 	
-	if direction:
+	if direction.x != 0 && state_machine.check_if_can_move():
 		velocity.x = direction.x * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
@@ -45,15 +54,24 @@ func _physics_process(delta):
 	update_facing_direction()
 	
 
+
+	
+#func land():
+	#animated_sprite.play("jump_end")
+	#animation_locked = true
+
 func update_facing_direction():
 	if direction.x > 0:
-		animated_sprite.flip_h = false
+		sprite.flip_h = false
+		pass
 	elif direction.x < 0:
-		animated_sprite.flip_h = true
+		sprite.flip_h = true
+		pass
 	
 func update_animation():
-	if not animation_locked:
-		if direction.x != 0:
-			animated_sprite.play("run")
-		else:
-			animated_sprite.play("idle")
+	animation_tree.set("parameters/Move/blend_position", direction.x)
+
+
+#func _on_animated_sprite_2d_animation_finished():
+	#if (animated_sprite.animation  == "jump_start"):
+		#animation_locked = false
