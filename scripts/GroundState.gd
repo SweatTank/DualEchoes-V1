@@ -5,6 +5,8 @@ class_name GroundState
 @export var jump_velocity : float = -250.0
 @export  var air_state : State
 @export var jump_animation : String = "jump start"
+@export var attack_state : State
+@export var attack_node : String = "attack1"
 
 #velocity.y = jump_velocity
 
@@ -15,6 +17,9 @@ class_name GroundState
 func state_input(event : InputEvent):
 	if (event.is_action_pressed("Player_jump")):
 		jump()
+	
+	if (event.is_action_pressed("Attack")):
+		attack()
 		
 
 func jump():
@@ -23,6 +28,9 @@ func jump():
 	playback.travel(jump_animation)
 
 
+func attack():
+	next_state = attack_state
+	playback.travel(attack_node)
 
 
 # Called when the node enters the scene tree for the first time.
