@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://vnsuup53ovdf"]
+[gd_scene load_steps=35 format=3 uid="uid://vnsuup53ovdf"]
 
 [ext_resource type="Texture2D" uid="uid://byr2oes8mfc4m" path="res://assets/skele/Skeleton Idle.png" id="1_8vqut"]
 [ext_resource type="Script" path="res://skele/enemy.gd" id="1_ommbm"]
@@ -303,6 +303,69 @@ _data = {
 "walk": SubResource("Animation_yx1jd")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qadhk"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jhsrf"]
+animation = &"dead"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m4gpf"]
+animation = &"hit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gufc0"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kfvmb"]
+animation = &"react"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lupo2"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r2pmc"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j0mvj"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_348qc"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ypa6k"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uhugc"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0mfjl"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_63j0j"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cc7w2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5nodd"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h1rlo"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rklqk"]
+states/attack/node = SubResource("AnimationNodeAnimation_qadhk")
+states/attack/position = Vector2(592, 100)
+states/dead/node = SubResource("AnimationNodeAnimation_jhsrf")
+states/dead/position = Vector2(721, 211)
+states/hit/node = SubResource("AnimationNodeAnimation_m4gpf")
+states/hit/position = Vector2(487, 187)
+states/idle/node = SubResource("AnimationNodeAnimation_gufc0")
+states/idle/position = Vector2(312, 100)
+states/react/node = SubResource("AnimationNodeAnimation_kfvmb")
+states/react/position = Vector2(455, 51)
+states/walk/node = SubResource("AnimationNodeAnimation_lupo2")
+states/walk/position = Vector2(312, 197)
+transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_r2pmc"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_j0mvj"), "idle", "react", SubResource("AnimationNodeStateMachineTransition_348qc"), "walk", "react", SubResource("AnimationNodeStateMachineTransition_ypa6k"), "react", "attack", SubResource("AnimationNodeStateMachineTransition_uhugc"), "hit", "dead", SubResource("AnimationNodeStateMachineTransition_0mfjl"), "attack", "hit", SubResource("AnimationNodeStateMachineTransition_63j0j"), "walk", "hit", SubResource("AnimationNodeStateMachineTransition_cc7w2"), "react", "hit", SubResource("AnimationNodeStateMachineTransition_5nodd"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_h1rlo")]
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_ommbm")
 jump_velocity = -200.0
@@ -325,6 +388,13 @@ zoom = Vector2(7, 7)
 libraries = {
 "": SubResource("AnimationLibrary_t7or6")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t7or6")
+}
+tree_root = SubResource("AnimationNodeStateMachine_rklqk")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("8_t47t2")
