@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://vnsuup53ovdf"]
+[gd_scene load_steps=18 format=3 uid="uid://vnsuup53ovdf"]
 
 [ext_resource type="Texture2D" uid="uid://byr2oes8mfc4m" path="res://assets/skele/Skeleton Idle.png" id="1_8vqut"]
 [ext_resource type="Script" path="res://skele/enemy.gd" id="1_ommbm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://op77etgo7p3m" path="res://assets/skele/Skeleton Dead.png" id="5_ip63w"]
 [ext_resource type="Texture2D" uid="uid://4chnej5b6lj1" path="res://assets/skele/Skeleton Walk.png" id="6_kchqo"]
 [ext_resource type="Texture2D" uid="uid://brmbxv26e5226" path="res://assets/skele/Skeleton React.png" id="7_r78l0"]
+[ext_resource type="Script" path="res://scripts/Damageable.gd" id="8_t47t2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_alb4s"]
 radius = 8.0
@@ -324,3 +325,6 @@ zoom = Vector2(7, 7)
 libraries = {
 "": SubResource("AnimationLibrary_t7or6")
 }
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("8_t47t2")
