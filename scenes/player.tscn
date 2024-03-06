@@ -225,3 +225,7 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_5sr57")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, -12)
+zoom = Vector2(7, 7)

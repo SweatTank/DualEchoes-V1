@@ -27,7 +27,7 @@ func _physics_process(delta):
 		if is_on_floor():
 			velocity.y = jump_velocity
 		elif not has_double_jumped:
-			velocity.y = double_jump_velocity + jump_velocity
+			velocity.y = double_jump_velocity + jump_velocity/1.5
 			has_double_jumped = true
 			
 
