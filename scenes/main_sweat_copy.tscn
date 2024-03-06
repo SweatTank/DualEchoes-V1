@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3xkfw3fgptg2"]
+[gd_scene load_steps=10 format=3 uid="uid://c3xkfw3fgptg2"]
 
 [ext_resource type="Texture2D" uid="uid://cot2vq13tnagv" path="res://assets/background/background_layer_1.png" id="1_fkc3r"]
 [ext_resource type="Texture2D" uid="uid://4xooe04aebl3" path="res://assets/background/background_layer_2.png" id="2_ibctj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b2rpuby82h0dk" path="res://assets/tilesets/oak_woods_tileset.png" id="4_uugrp"]
 [ext_resource type="PackedScene" uid="uid://ksjlxjwt1brw" path="res://scenes/player.tscn" id="5_vhl4h"]
 [ext_resource type="PackedScene" uid="uid://vnsuup53ovdf" path="res://scenes/enemy.tscn" id="6_f1yfe"]
+[ext_resource type="PackedScene" uid="uid://bb33x3qs1l6ef" path="res://UI/health_changed_manager.tscn" id="7_62h1q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_72cm1"]
 texture = ExtResource("4_uugrp")
@@ -577,3 +578,5 @@ position = Vector2(-77, 39)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("6_f1yfe")]
 position = Vector2(184, 44)
+
+[node name="HealthChangedManager" parent="." instance=ExtResource("7_62h1q")]
