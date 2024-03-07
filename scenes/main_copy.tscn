@@ -768,6 +768,6 @@ position = Vector2(-2, 1)
 color = Color(0.752941, 0.776471, 0.823529, 1)
 
 [node name="Skele" parent="." instance=ExtResource("7_5jgnr")]
-position = Vector2(253, 356)
+position = Vector2(421, 359)
 
 [node name="HealthChangedManager" parent="." instance=ExtResource("6_uosqo")]
