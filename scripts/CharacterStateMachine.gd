@@ -17,6 +17,9 @@ func _ready():
 			child.character = character
 			child.playback = animation_tree["parameters/playback"]
 			
+			
+			child.connect("interrupt_state", on_state_interrupt_state)
+			
 		else:
 			push_warning("Child" + child.name + "is not a State for CharacterStateMachine")
 
@@ -42,6 +45,9 @@ func _physics_process(delta):
 		switch_states(current_state.next_state)
 		
 	current_state.state_process(delta)
+
+func on_state_interrupt_state(new_state : State):
+	switch_states(new_state)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
