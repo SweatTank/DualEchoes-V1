@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjwlvkfgu0egx"]
+
+[ext_resource type="Texture2D" uid="uid://csefxup8j1ci0" path="res://assets/Torch-Sprites/bigtorchlit1.png" id="1_3jheh"]
+[ext_resource type="Texture2D" uid="uid://rdbon7r6e32r" path="res://assets/Torch-Sprites/explosion_anim_f0.png" id="2_hs25s"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 13)
+scale = Vector2(0.59375, 0.476563)
+texture = ExtResource("1_3jheh")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(-0.842125, -55.6066)
+scale = Vector2(1.99013, 2.68033)
+energy = 1.25
+texture = ExtResource("2_hs25s")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(-0.842133, -57.7049)
+scale = Vector2(5.04605, 6.86885)
+energy = 1.15
+texture = ExtResource("2_hs25s")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(-0.842125, -55.6066)
+scale = Vector2(1.99013, 2.68033)
+energy = 1.25
+texture = ExtResource("2_hs25s")
+texture_scale = 1.9
+
+[node name="PointLight2D4" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(-0.842125, -55.6066)
+scale = Vector2(1.99013, 2.68033)
+color = Color(0.54902, 0.431373, 0.282353, 1)
+energy = 1.11
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 6.5
+texture = ExtResource("2_hs25s")
+texture_scale = 50.0
