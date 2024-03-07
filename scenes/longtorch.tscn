@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjwlvkfgu0egx"]
+[gd_scene load_steps=3 format=3 uid="uid://b22jlc57cr0ot"]
 
 [ext_resource type="Texture2D" uid="uid://csefxup8j1ci0" path="res://assets/Torch-Sprites/bigtorchlit1.png" id="1_3jheh"]
 [ext_resource type="Texture2D" uid="uid://rdbon7r6e32r" path="res://assets/Torch-Sprites/explosion_anim_f0.png" id="2_hs25s"]
@@ -14,6 +14,8 @@ texture = ExtResource("1_3jheh")
 position = Vector2(-0.842125, -55.6066)
 scale = Vector2(1.99013, 2.68033)
 energy = 1.25
+range_layer_min = -512
+range_layer_max = -512
 texture = ExtResource("2_hs25s")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Sprite2D"]
@@ -33,7 +35,7 @@ texture_scale = 1.9
 position = Vector2(-0.842125, -55.6066)
 scale = Vector2(1.99013, 2.68033)
 color = Color(0.54902, 0.431373, 0.282353, 1)
-energy = 1.11
+energy = 0.91
 shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 6.5
