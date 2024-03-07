@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3xkfw3fgptg2"]
+[gd_scene load_steps=9 format=3 uid="uid://7ckp4co13rn4"]
 
 [ext_resource type="Texture2D" uid="uid://cot2vq13tnagv" path="res://assets/background/background_layer_1.png" id="1_fkc3r"]
 [ext_resource type="Texture2D" uid="uid://4xooe04aebl3" path="res://assets/background/background_layer_2.png" id="2_ibctj"]
@@ -532,7 +532,7 @@ tile_size = Vector2i(24, 24)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_72cm1")
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
