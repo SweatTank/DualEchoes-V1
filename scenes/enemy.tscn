@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=18 format=3 uid="uid://vnsuup53ovdf"]
+
 
 [ext_resource type="Texture2D" uid="uid://byr2oes8mfc4m" path="res://assets/skele/Skeleton Idle.png" id="1_8vqut"]
 [ext_resource type="Script" path="res://skele/enemy.gd" id="1_ommbm"]
@@ -8,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://4chnej5b6lj1" path="res://assets/skele/Skeleton Walk.png" id="6_kchqo"]
 [ext_resource type="Texture2D" uid="uid://brmbxv26e5226" path="res://assets/skele/Skeleton React.png" id="7_r78l0"]
 [ext_resource type="Script" path="res://scripts/Damageable.gd" id="8_t47t2"]
+[ext_resource type="Script" path="res://scripts/CharacterStateMachine.gd" id="9_y10pm"]
+[ext_resource type="Script" path="res://scripts/State.gd" id="10_7di3n"]
+[ext_resource type="Script" path="res://scripts/HitState.gd" id="11_s6qg1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_alb4s"]
 radius = 8.0
@@ -303,9 +308,29 @@ _data = {
 "walk": SubResource("Animation_yx1jd")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jhsrf"]
+animation = &"dead"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lupo2"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n13lc"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ytuhw"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rklqk"]
+states/Start/position = Vector2(143, 197)
+states/dead/node = SubResource("AnimationNodeAnimation_jhsrf")
+states/dead/position = Vector2(698, 186)
+states/walk/node = SubResource("AnimationNodeAnimation_lupo2")
+states/walk/position = Vector2(312, 197)
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_n13lc"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_ytuhw")]
+
+[node name="Skele" type="CharacterBody2D"]
+
 script = ExtResource("1_ommbm")
-jump_velocity = -200.0
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
@@ -317,7 +342,6 @@ position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_alb4s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 position = Vector2(1, -12)
 zoom = Vector2(7, 7)
 
@@ -328,3 +352,22 @@ libraries = {
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("8_t47t2")
+
+[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "animation_tree", "current_state")]
+script = ExtResource("9_y10pm")
+character = NodePath("..")
+animation_tree = NodePath("../AnimationTree")
+current_state = NodePath("Walk")
+
+[node name="Walk" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("10_7di3n")
+
+[node name="Dead" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("10_7di3n")
+
+[node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state", "character_state_machine")]
+script = ExtResource("11_s6qg1")
+damageable = NodePath("../../Damageable")
+dead_state = NodePath("../Dead")
+character_state_machine = NodePath("..")
+can_move = false
