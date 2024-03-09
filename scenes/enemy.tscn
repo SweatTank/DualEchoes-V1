@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://scripts/HitState.gd" id="11_s6qg1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_alb4s"]
-radius = 4.0
+radius = 7.0
 height = 22.0
 
 [sub_resource type="Animation" id="Animation_ywv5r"]
@@ -53,18 +53,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_wf7tl"]
@@ -145,18 +133,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_hl56s"]
@@ -351,15 +327,17 @@ states/walk/position = Vector2(312, 197)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_n13lc"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_ytuhw")]
 
 [node name="Skele" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_ommbm")
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
 texture = ExtResource("1_8vqut")
+flip_h = true
 hframes = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 1)
+position = Vector2(3, 1)
 shape = SubResource("CapsuleShape2D_alb4s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -390,6 +368,10 @@ current_state = NodePath("Walk")
 [node name="Walk" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("10_7di3n")
 
+[node name="Timer" type="Timer" parent="CharacterStateMachine/Walk"]
+wait_time = 4.0
+one_shot = true
+
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("10_7di3n")
 
@@ -399,3 +381,5 @@ damageable = NodePath("../../Damageable")
 dead_state = NodePath("../Dead")
 character_state_machine = NodePath("..")
 can_move = false
+
+[connection signal="animation_finished" from="AnimationTree" to="Damageable" method="_on_animation_tree_animation_finished"]
