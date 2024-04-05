@@ -1,4 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://vnsuup53ovdf"]
+
+[gd_scene load_steps=18 format=3 uid="uid://vnsuup53ovdf"]
+
 
 [ext_resource type="Texture2D" uid="uid://byr2oes8mfc4m" path="res://assets/skele/Skeleton Idle.png" id="1_8vqut"]
 [ext_resource type="Script" path="res://skele/enemy.gd" id="1_ommbm"]
@@ -307,6 +309,7 @@ _data = {
 "walk": SubResource("Animation_yx1jd")
 }
 
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jhsrf"]
 animation = &"dead"
 
@@ -348,13 +351,6 @@ zoom = Vector2(7, 7)
 libraries = {
 "": SubResource("AnimationLibrary_t7or6")
 }
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_t7or6")
-}
-tree_root = SubResource("AnimationNodeStateMachine_rklqk")
-anim_player = NodePath("../AnimationPlayer")
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("8_t47t2")
