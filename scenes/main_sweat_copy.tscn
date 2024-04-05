@@ -1,5 +1,9 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=9 format=3 uid="uid://7ckp4co13rn4"]
 
+=======
+[gd_scene load_steps=10 format=3 uid="uid://7ckp4co13rn4"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://cot2vq13tnagv" path="res://assets/background/background_layer_1.png" id="1_fkc3r"]
 [ext_resource type="Texture2D" uid="uid://4xooe04aebl3" path="res://assets/background/background_layer_2.png" id="2_ibctj"]

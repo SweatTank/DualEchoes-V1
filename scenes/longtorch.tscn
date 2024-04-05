@@ -30,8 +30,8 @@ texture = ExtResource("2_hs25s")
 texture_scale = 1.9
 
 [node name="PointLight2D4" type="PointLight2D" parent="Sprite2D"]
-position = Vector2(-0.842125, -55.6066)
-scale = Vector2(1.99013, 2.68033)
+position = Vector2(0, -46.1639)
+scale = Vector2(0.404638, 0.463853)
 color = Color(0.54902, 0.431373, 0.282353, 1)
 energy = 0.97
 shadow_enabled = true
