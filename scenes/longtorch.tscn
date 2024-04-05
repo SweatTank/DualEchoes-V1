@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b22jlc57cr0ot"]
+[gd_scene load_steps=3 format=3 uid="uid://cjwlvkfgu0egx"]
 
 [ext_resource type="Texture2D" uid="uid://csefxup8j1ci0" path="res://assets/Torch-Sprites/bigtorchlit1.png" id="1_3jheh"]
 [ext_resource type="Texture2D" uid="uid://rdbon7r6e32r" path="res://assets/Torch-Sprites/explosion_anim_f0.png" id="2_hs25s"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, 13)
@@ -32,8 +32,8 @@ texture = ExtResource("2_hs25s")
 texture_scale = 1.9
 
 [node name="PointLight2D4" type="PointLight2D" parent="Sprite2D"]
-position = Vector2(-0.842125, -55.6066)
-scale = Vector2(1.99013, 2.68033)
+position = Vector2(0, -46.1639)
+scale = Vector2(0.404638, 0.463853)
 color = Color(0.54902, 0.431373, 0.282353, 1)
 energy = 0.91
 shadow_enabled = true

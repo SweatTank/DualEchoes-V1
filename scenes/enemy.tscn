@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://vnsuup53ovdf"]
+[gd_scene load_steps=21 format=3 uid="uid://vnsuup53ovdf"]
 
 [ext_resource type="Texture2D" uid="uid://byr2oes8mfc4m" path="res://assets/skele/Skeleton Idle.png" id="1_8vqut"]
 [ext_resource type="Script" path="res://skele/enemy.gd" id="1_ommbm"]
@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://scripts/HitState.gd" id="11_s6qg1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_alb4s"]
-radius = 4.0
+radius = 7.0
 height = 22.0
 
 [sub_resource type="Animation" id="Animation_ywv5r"]
@@ -53,18 +53,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_wf7tl"]
@@ -145,18 +133,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 13]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_hl56s"]
@@ -331,35 +307,18 @@ _data = {
 "walk": SubResource("Animation_yx1jd")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jhsrf"]
-animation = &"dead"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lupo2"]
-animation = &"walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n13lc"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ytuhw"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rklqk"]
-states/Start/position = Vector2(143, 197)
-states/dead/node = SubResource("AnimationNodeAnimation_jhsrf")
-states/dead/position = Vector2(698, 186)
-states/walk/node = SubResource("AnimationNodeAnimation_lupo2")
-states/walk/position = Vector2(312, 197)
-transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_n13lc"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_ytuhw")]
-
 [node name="Skele" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_ommbm")
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
 texture = ExtResource("1_8vqut")
+flip_h = true
 hframes = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 1)
+position = Vector2(3, 1)
 shape = SubResource("CapsuleShape2D_alb4s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -371,24 +330,20 @@ libraries = {
 "": SubResource("AnimationLibrary_t7or6")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_t7or6")
-}
-tree_root = SubResource("AnimationNodeStateMachine_rklqk")
-anim_player = NodePath("../AnimationPlayer")
-
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("8_t47t2")
 
-[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "animation_tree", "current_state")]
+[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "current_state")]
 script = ExtResource("9_y10pm")
 character = NodePath("..")
-animation_tree = NodePath("../AnimationTree")
 current_state = NodePath("Walk")
 
 [node name="Walk" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("10_7di3n")
+
+[node name="Timer" type="Timer" parent="CharacterStateMachine/Walk"]
+wait_time = 4.0
+one_shot = true
 
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("10_7di3n")

@@ -704,7 +704,7 @@ occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_72cm1")
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 position = Vector2(351, 100)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
