@@ -3,8 +3,6 @@ extends CharacterBody2D
 
 @export var speed : float = 300.0
 
-
-
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var state_machine : CharacterStateMachine = $CharacterStateMachine
@@ -35,9 +33,6 @@ func _physics_process(delta):
 	move_and_slide()
 	update_animation_parameters()
 	update_facing_direction()
-
-
-
 
 func update_facing_direction():
 	if direction.x > 0:
