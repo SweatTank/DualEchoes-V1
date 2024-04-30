@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://vnsuup53ovdf"]
+[gd_scene load_steps=36 format=3 uid="uid://vnsuup53ovdf"]
 
 [ext_resource type="Texture2D" uid="uid://byr2oes8mfc4m" path="res://assets/skele/Skeleton Idle.png" id="1_8vqut"]
 [ext_resource type="Script" path="res://skele/enemy.gd" id="1_ommbm"]
@@ -10,18 +10,22 @@
 [ext_resource type="Script" path="res://scripts/Damageable.gd" id="8_t47t2"]
 [ext_resource type="Script" path="res://scripts/CharacterStateMachine.gd" id="9_y10pm"]
 [ext_resource type="Script" path="res://scripts/State.gd" id="10_7di3n"]
+[ext_resource type="Script" path="res://scripts/WalkState.gd" id="10_uho0l"]
 [ext_resource type="Script" path="res://scripts/HitState.gd" id="11_s6qg1"]
+[ext_resource type="PackedScene" uid="uid://bbgibqh2q4vl4" path="res://health_bar.tscn" id="12_76tn4"]
+[ext_resource type="Script" path="res://scripts/AttackState.gd" id="12_kw3e7"]
+[ext_resource type="Script" path="res://scripts/Idle.gd" id="12_yy0nw"]
+[ext_resource type="Script" path="res://scenes/scythe.gd" id="16_xorsq"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_alb4s"]
-radius = 4.0
-height = 22.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcpll"]
+size = Vector2(14, 25)
 
 [sub_resource type="Animation" id="Animation_ywv5r"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,7 +37,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:hframes")
+tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -45,7 +49,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sprite:frame")
+tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -73,7 +77,7 @@ length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -85,7 +89,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:hframes")
+tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -97,7 +101,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sprite:frame")
+tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -106,6 +110,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 16, 16]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("scythe:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_fr56j"]
 resource_name = "dead"
@@ -113,7 +129,7 @@ length = 1.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -125,7 +141,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:hframes")
+tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -137,7 +153,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sprite:frame")
+tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -165,7 +181,7 @@ length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -177,7 +193,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:hframes")
+tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -189,7 +205,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sprite:frame")
+tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -205,7 +221,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -217,7 +233,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:hframes")
+tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -229,7 +245,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sprite:frame")
+tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -245,7 +261,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -257,7 +273,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:hframes")
+tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -269,7 +285,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sprite:frame")
+tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -282,11 +298,10 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_yx1jd"]
 resource_name = "walk"
 length = 1.1
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -298,7 +313,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:hframes")
+tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -310,7 +325,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sprite:frame")
+tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -331,6 +346,9 @@ _data = {
 "walk": SubResource("Animation_yx1jd")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bc2nq"]
+animation = &"attack"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jhsrf"]
 animation = &"dead"
 
@@ -342,25 +360,39 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ytuhw"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_huyeb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_otdus"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rklqk"]
 states/Start/position = Vector2(143, 197)
+states/attack/node = SubResource("AnimationNodeAnimation_bc2nq")
+states/attack/position = Vector2(345, 86)
 states/dead/node = SubResource("AnimationNodeAnimation_jhsrf")
 states/dead/position = Vector2(698, 186)
 states/walk/node = SubResource("AnimationNodeAnimation_lupo2")
 states/walk/position = Vector2(312, 197)
-transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_n13lc"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_ytuhw")]
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_n13lc"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_ytuhw"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_huyeb"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_otdus")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xd8bv"]
+size = Vector2(85, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cefbo"]
+size = Vector2(12, 27)
 
 [node name="Skele" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_ommbm")
 
-[node name="sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -4)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-12, -21)
 texture = ExtResource("1_8vqut")
+centered = false
 hframes = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 1)
-shape = SubResource("CapsuleShape2D_alb4s")
+position = Vector2(-3, -0.5)
+shape = SubResource("RectangleShape2D_hcpll")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, -12)
@@ -388,10 +420,11 @@ animation_tree = NodePath("../AnimationTree")
 current_state = NodePath("Walk")
 
 [node name="Walk" type="Node" parent="CharacterStateMachine"]
-script = ExtResource("10_7di3n")
+script = ExtResource("10_uho0l")
 
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("10_7di3n")
+can_move = false
 
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state", "character_state_machine")]
 script = ExtResource("11_s6qg1")
@@ -399,3 +432,46 @@ damageable = NodePath("../../Damageable")
 dead_state = NodePath("../Dead")
 character_state_machine = NodePath("..")
 can_move = false
+
+[node name="AttackState" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("attack_state", "character_state_machine", "idle_state")]
+script = ExtResource("12_kw3e7")
+attack_state = NodePath(".")
+character_state_machine = NodePath("..")
+idle_state = NodePath("../Idle")
+
+[node name="Idle" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("12_yy0nw")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_xd8bv")
+debug_color = Color(0.792157, 0.427451, 0.0431373, 0.419608)
+
+[node name="HealthBar" parent="." instance=ExtResource("12_76tn4")]
+offset_left = -12.0
+offset_top = -24.0
+offset_right = 11.0
+offset_bottom = -22.0
+
+[node name="scythe" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+monitoring = false
+script = ExtResource("16_xorsq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scythe"]
+position = Vector2(13, 0.5)
+shape = SubResource("RectangleShape2D_cefbo")
+
+[connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/AttackState" method="_on_animation_tree_animation_finished"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_entered" from="DetectionArea" to="CharacterStateMachine/Walk" method="_on_detection_area_body_entered"]
+[connection signal="body_entered" from="DetectionArea" to="CharacterStateMachine/AttackState" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_exited" from="DetectionArea" to="CharacterStateMachine/Walk" method="_on_detection_area_body_exited"]
+[connection signal="body_exited" from="DetectionArea" to="CharacterStateMachine/AttackState" method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="scythe" to="scythe" method="_on_body_entered"]

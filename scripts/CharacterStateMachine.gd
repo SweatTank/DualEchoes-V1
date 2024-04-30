@@ -45,10 +45,14 @@ func _physics_process(delta):
 		switch_states(current_state.next_state)
 		
 	current_state.state_process(delta)
+	
+	if current_state:
+		current_state.on_physics_process(delta)
 
 func on_state_interrupt_state(new_state : State):
 	switch_states(new_state)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if current_state:
+		current_state.on_process(delta)

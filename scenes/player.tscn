@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ksjlxjwt1brw"]
+[gd_scene load_steps=38 format=3 uid="uid://ksjlxjwt1brw"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_5rylc"]
 [ext_resource type="Texture2D" uid="uid://dh62nhbqjjv4h" path="res://assets/MC/adventurer-Sheet.png" id="2_rk0fr"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/Attack.gd" id="7_44axh"]
 [ext_resource type="Script" path="res://scripts/StateDebug.gd" id="7_qdope"]
 [ext_resource type="Script" path="res://scripts/Sword.gd" id="9_l3k7l"]
+[ext_resource type="Script" path="res://scenes/FacingCollisionShape.gd" id="10_eu7vi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sr57"]
 size = Vector2(10, 25)
@@ -493,6 +494,7 @@ transitions = ["Start", "move", SubResource("AnimationNodeStateMachineTransition
 size = Vector2(13, 27)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_5rylc")
 speed = 150.0
 
@@ -564,13 +566,20 @@ text = "State: "
 script = ExtResource("7_qdope")
 state_machine = NodePath("../CharacterStateMachine")
 
-[node name="Sword" type="Area2D" parent="."]
+[node name="Sword" type="Area2D" parent="." node_paths=PackedStringArray("player", "facing_shape")]
+collision_layer = 0
+collision_mask = 4
 monitoring = false
 script = ExtResource("9_l3k7l")
+player = NodePath("..")
+facing_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
 position = Vector2(18, 4)
 shape = SubResource("RectangleShape2D_dusma")
+script = ExtResource("10_eu7vi")
+facing_left_position = Vector2(-18, 4)
+facing_right_position = Vector2(18, 4)
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
